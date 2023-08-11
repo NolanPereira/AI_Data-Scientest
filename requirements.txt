@@ -2,7 +2,7 @@ alembic==1.8.1
 altair==4.2.0
 ansi2html==1.8.0
 asttokens==2.2.1
-attrs==22.1.0
+attrs
 backcall==0.2.0
 blinker==1.5
 blis==0.7.9
