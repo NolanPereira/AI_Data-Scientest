@@ -81,3 +81,6 @@ if choice == "Test":
         results = model.predict(info)
         st.write('This is your output')
         results
+
+     with open('best_model.pkl', 'rb') as f:
+        st.download_button('Download Model', f, file_name="best_model.pkl")
