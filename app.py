@@ -42,6 +42,7 @@ if choice == "Train":
 
             setup(df, target=chosen_target)
             setup_df = pull()
+            st.dataframe(setup_df)
             best_model = compare_models()
             compare_df = pull()
             st.dataframe(compare_df)
@@ -53,6 +54,7 @@ if choice == "Train":
 
             setup(df, target=chosen_target)
             setup_df = pull()
+            st.dataframe(setup_df)
             best_model = compare_models()
             compare_df = pull()
             st.dataframe(compare_df)
