@@ -10,7 +10,7 @@ with st.sidebar:
     st.image(
         "https://imageio.forbes.com/specials-images/dam/imageserve/966248982/960x0.jpg?height=456&width=711&fit=bounds")
     st.title("Fully Automated ML model")
-    choice = st.radio("Select your task", ["Upload", "Analyse", "Train", "Test"])
+    choice = st.radio("Select your task", ["Upload", "Analyse", "Train", "Test", "Download"])
 
 if os.path.exists('./dataset.csv'):
     df = pd.read_csv('dataset.csv', index_col=None)
@@ -82,5 +82,26 @@ if choice == "Test":
         st.write('This is your output')
         results
     
+
+if choice == "Download":
+    st.header("Download your Model")
+    from pycaret.regression import load_model
+    from pycaret.classification import load_model
+
     with open('best_model.pkl', 'rb') as f:
         st.download_button('Download Model', f, file_name="best_model.pkl")
+
+    st.header("Download your Predicted Results")
+    test_file = st.file_uploader("Upload your CSV file to get prediction")
+    if test_file:
+        test_df = pd.read_csv(test_file, index_col=None)
+        # st.dataframe(test_df)
+        model = load_model('best_model')
+        results = model.predict(test_df)
+        Prediction = pd.DataFrame(results, columns =['Prediction'])
+
+        Prediction.to_csv('Prediction.csv', index=None)
+
+        with open('Prediction.csv', 'rb') as f:
+            st.download_button('Download Predicted Values', f, file_name="Prediction.csv")
+
