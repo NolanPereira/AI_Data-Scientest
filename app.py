@@ -24,7 +24,7 @@ if choice == "Upload":
         st.dataframe(df)
 
 if choice == "Analyse":
-    st.header("Exploratory Data Analysis")
+    st.title("Exploratory Data Analysis")
     Analysed_DF = df.profile_report()
     st_profile_report(Analysed_DF)
 
