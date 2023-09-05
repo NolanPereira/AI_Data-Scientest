@@ -16,7 +16,7 @@ if os.path.exists('./dataset.csv'):
     df = pd.read_csv('dataset.csv', index_col=None)
 
 if choice == "Upload":
-    st.title('Upload your file for modeling')
+    st.title('Upload your file to Begin Prediction')
     file = st.file_uploader("Upload Your Dataset Here")
     if file:
         df = pd.read_csv(file, index_col=None)
@@ -29,7 +29,7 @@ if choice == "Analyse":
     st_profile_report(Analysed_DF)
 
 if choice == "Train":
-    st.title("Training your model")
+    st.title("Training your Model")
     chosen_target = st.selectbox('Choose the target variable', df.columns)
     x = df.drop(chosen_target, axis=1)
     x.to_csv('newdf.csv', index=None)
@@ -64,7 +64,7 @@ if os.path.exists('./newdf.csv'):
 
 
 if choice == "Test":
-    st.title("Test your model")
+    st.title("Test your Model")
     from pycaret.regression import load_model
     from pycaret.classification import load_model
 
